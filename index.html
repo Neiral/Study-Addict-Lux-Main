@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>StudyAddict Lux+</title>
+  <!-- Google Fonts for a premium look -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Chart.js for weekly data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Intro Animation Overlay -->
+  <div id="introOverlay"><h1>StudyAddict Lux+</h1></div>
+
+  <!-- Abstract Shapes Background -->
+  <div id="abstractShapes"></div>
+
+  <!-- Scroll-to-Top Button -->
+  <button id="scrollTopButton" onclick="scrollToTop()">↑</button>
+
+  <!-- ------------------- Audio Elements ------------------- -->
+  <audio id="audioStart" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+  <audio id="audioStop" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
+  <audio id="audioLevelUp" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+
+  <!-- ------------------- Navbar ------------------- -->
+  <div id="navbar">
+    <span title="Current streak"><strong>Streak:</strong> <span id="streakCount">0</span></span>
+    <span title="Coins earned"><span class="coinIcon"></span><strong>Coins:</strong> <span id="coinCount">0</span></span>
+    <span title="Total study time"><strong>Total Study:</strong> <span id="timeCount">0</span> min</span>
+    <span title="Your current level"><strong>Level:</strong> <span id="levelCount">1</span></span>
+    <!-- New XP Display -->
+    <span title="Experience Points"><strong>XP:</strong> <span id="xpCount">0</span> / <span id="xpThreshold">100</span></span>
+    <span title="Your rank"><strong>Rank:</strong> <span id="rankTier">Bronze</span></span>
+    <span title="Remaining energy"><strong>Energy:</strong> <span id="energyCount">100</span>%</span>
+    <span><button id="darkModeToggle" onclick="toggleDarkMode()">Dark Mode</button></span>
+    <span><button onclick="openThemeModal()">Change Theme</button></span>
+    <span><button onclick="openSearchOverlay()">Search</button></span>
+    <span><button onclick="openSettingsModal()">Settings</button></span>
+    <span><button onclick="openShopModal()">Shop</button></span>
+    <span title="Your Avatar"><strong>Avatar:</strong> <div id="currentAvatar" class="avatar avatar1"></div></span>
+  </div>
+
+  <!-- ------------------- Main Content ------------------- -->
+  <div id="main">
+    <div id="eventBanner">Special Event: Study Marathon! Earn double coins today!</div>
+
+    <h1>StudyAddict Lux+</h1>
+
+    <div id="personalQuoteArea">
+      <p id="personalQuoteText" style="font-style: italic;"></p>
+      <input type="text" id="quoteInput" placeholder="Enter your personal quote">
+      <button onclick="savePersonalQuote()">Save Quote</button>
+    </div>
+
+    <div id="quoteArea">
+      <p id="quoteText"></p>
+      <button onclick="newQuote()">New Quote</button>
+    </div>
+
+    <div class="modules" id="moduleContainer">
+      <div class="module" onclick="moduleRipple(event); selectSubject('SST')">
+        <h2>SST</h2>
+        <p>History, Civics, Geography</p>
+      </div>
+      <div class="module" onclick="moduleRipple(event); selectSubject('English')">
+        <h2>English</h2>
+        <p>Grammar, Writing, Reading</p>
+      </div>
+      <div class="module" onclick="moduleRipple(event); selectSubject('IT')">
+        <h2>IT</h2>
+        <p>Technology &amp; Coding</p>
+      </div>
+      <div class="module" onclick="moduleRipple(event); selectSubject('Maths')">
+        <h2>Maths</h2>
+        <p>Algebra, Geometry, Calculus</p>
+      </div>
+      <div class="module" onclick="moduleRipple(event); selectSubject('Sanskrit')">
+        <h2>Sanskrit</h2>
+        <p>Language, Literature, Grammar</p>
+      </div>
+      <!-- New Subjects Added Below -->
+      <div class="module" onclick="moduleRipple(event); selectSubject('Physics')">
+        <h2>Physics</h2>
+        <p>Mechanics, Thermodynamics, Optics</p>
+      </div>
+      <div class="module" onclick="moduleRipple(event); selectSubject('Chemistry')">
+        <h2>Chemistry</h2>
+        <p>Organic, Inorganic, Physical</p>
+      </div>
+      <div class="module" onclick="moduleRipple(event); selectSubject('Biology')">
+        <h2>Biology</h2>
+        <p>Botany, Zoology, Genetics</p>
+      </div>
+    </div>
+
+    <div id="studySession">
+      <h2>Study Session</h2>
+      <p><strong>Subject:</strong> <span id="currentSubject">None</span></p>
+      <!-- Updated to show minutes and seconds -->
+      <p><strong>Session Time:</strong> <span id="sessionTime">0 min 0 sec</span></p>
+      <button id="startBtn" onclick="startSession()">Start Session</button>
+      <button id="stopBtn" onclick="stopSession()">Stop Session</button>
+      <div id="fireworks"></div>
+      <!-- Countdown Timer (now shows minutes and seconds) -->
+      <div id="countdownTimer" style="margin-top:10px; font-size:1.2em;"></div>
+    </div>
+
+    <!-- Reward Chest Element -->
+    <div id="rewardChest" onclick="openChest()">Reward Chest</div>
+
+    <!-- ------------------- Daily Routine Section (NEW) ------------------- -->
+    <div id="dailyRoutineSection">
+      <h2>Daily Routine</h2>
+      <p id="dailyRoutineText">Loading your daily routine...</p>
+    </div>
+
+    <div id="goalSettings">
+      <label for="dailyGoalInput"><strong>Daily Goal (min):</strong></label>
+      <input type="number" id="dailyGoalInput" value="180" min="1">
+      <button onclick="setDailyGoal()">Set Goal</button>
+      <!-- Circular Goal Tracker -->
+      <div id="circularGoal" style="--progress:0;"></div>
+    </div>
+
+    <div id="minSessionSettings">
+      <label for="minSessionInput"><strong>Minimum Session (min):</strong></label>
+      <input type="number" id="minSessionInput" value="1" min="1">
+      <button onclick="setMinSession()">Set Minimum</button>
+    </div>
+
+    <div id="dailyProgress">
+      <div id="dailyProgressBar"></div>
+    </div>
+
+    <!-- New XP Progress Bar Section -->
+    <div id="xpProgressContainer">
+      <p><strong>XP Progress</strong></p>
+      <div id="xpProgress">
+        <div id="xpProgressBar"></div>
+      </div>
+    </div>
+
+    <p>
+      <strong>Today's Study:</strong> <span id="todayStudy">0</span> min /
+      <span id="dailyGoalDisplay">180</span> min
+    </p>
+
+    <div id="weeklyDisplay">
+      Weekly Total: <span id="weeklyTotal">0</span> min
+    </div>
+
+    <div id="calendarSection">
+      <h2>Study Calendar (Last 7 Days)</h2>
+      <div id="calendarGrid"></div>
+    </div>
+
+    <canvas id="studyChart" width="400" height="200"></canvas>
+
+    <div id="mentorSection" style="margin-top:20px;">
+      <p><strong>Mentor Tip:</strong> <span id="mentorTip"></span></p>
+      <p><strong>Daily Challenge:</strong> <span id="dailyChallengeText"></span>
+         <button onclick="refreshDailyChallenge()">Refresh</button>
+      </p>
+    </div>
+
+    <div id="socialSection" style="margin-top:20px;">
+      <button onclick="shareProgress()">Share Progress</button>
+      <button onclick="giveFeedback()">Give Feedback</button>
+      <button onclick="setReminder()">Set Reminder</button>
+    </div>
+  </div>
+
+  <!-- ------------------- Shop Modal ------------------- -->
+  <div id="shopModal">
+    <h2>Study Shop</h2>
+    <div id="shopItems"></div>
+    <button onclick="closeShopModal()">Close Shop</button>
+  </div>
+
+  <!-- ------------------- Overlays & Modals ------------------- -->
+  <div id="searchOverlay" class="overlay">
+    <div class="overlay-content">
+      <span class="close" onclick="closeSearchOverlay()" style="color:#fff; font-size:2em; position:absolute; top:20px; right:30px; cursor:pointer;">&times;</span>
+      <input type="text" id="searchInput" placeholder="Type to search...">
+    </div>
+  </div>
+
+  <div id="themeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeThemeModal()" style="cursor:pointer; float:right;">&times;</span>
+      <h2>Select Theme</h2>
+      <button onclick="setTheme('light')">Light</button>
+      <button onclick="setTheme('dark')">Dark</button>
+      <button onclick="setTheme('blue')">Blue</button>
+      <!-- NEW: Luxury Theme Button -->
+      <button onclick="setTheme('luxury')">Luxury</button>
+    </div>
+  </div>
+
+  <div id="settingsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeSettingsModal()" style="cursor:pointer; float:right;">&times;</span>
+      <h2>Settings</h2>
+      <label for="dailyGoalInputSettings"><strong>Daily Goal (min):</strong></label>
+      <input type="number" id="dailyGoalInputSettings" value="180" min="1">
+      <button onclick="setDailyGoalFromSettings()">Set Daily Goal</button>
+      <br><br>
+      <label for="minSessionInputSettings"><strong>Minimum Session (min):</strong></label>
+      <input type="number" id="minSessionInputSettings" value="1" min="1">
+      <button onclick="setMinSessionFromSettings()">Set Minimum Session</button>
+      <br><br>
+      <!-- Animation Settings Panel -->
+      <label for="animationIntensity"><strong>Animation Intensity:</strong></label>
+      <input type="range" id="animationIntensity" min="0" max="100" value="100" onchange="setAnimationIntensity(this.value)">
+      <br><br>
+      <button onclick="openThemeModal()">Change Theme</button>
+    </div>
+  </div>
+
+  <div id="miniGameModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeMiniGame()" style="cursor:pointer; float:right;">&times;</span>
+      <h2>Quick Math Challenge</h2>
+      <p id="miniGameQuestion"></p>
+      <input type="number" id="miniGameAnswer" placeholder="Your answer">
+      <button onclick="submitMiniGame()">Submit</button>
+      <p id="miniGameResult"></p>
+    </div>
+  </div>
+
+  <div id="puzzleModal" class="modal" data-answer="">
+    <div class="modal-content" style="animation: puzzleBackground 5s infinite;">
+      <span class="close" onclick="closePuzzleGame()" style="cursor:pointer; float:right;">&times;</span>
+      <h2>Puzzle Challenge</h2>
+      <p id="puzzleQuestion"></p>
+      <input type="text" id="puzzleAnswer" placeholder="Your answer">
+      <button onclick="submitPuzzleGame()">Submit</button>
+      <p id="puzzleResult"></p>
+    </div>
+  </div>
+
+  <div id="checklistModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeChecklist()" style="cursor:pointer; float:right;">&times;</span>
+      <h2>Study Task Checklist</h2>
+      <ul id="taskList" style="list-style-type: none; padding:0;"></ul>
+      <input type="text" id="newTaskInput" placeholder="New task">
+      <button onclick="addTask()">Add Task</button>
+    </div>
+  </div>
+
+  <div id="mindfulnessModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeMindfulness()" style="cursor:pointer; float:right;">&times;</span>
+      <h2>Mindfulness Break</h2>
+      <p>Take a deep breath, relax, and clear your mind for a moment.</p>
+      <button onclick="closeMindfulness()">I'm Ready</button>
+    </div>
+  </div>
+
+  <div id="levelUp">Level Up!</div>
+  <div id="easterEgg" onclick="triggerEasterEgg()"></div>
+
+  <!-- Include external JavaScript -->
+  <script src="script.js"></script>
+
+  <!-- ------------------- Confetti Container ------------------- -->
+  <div id="confettiContainer" style="pointer-events:none; position: fixed; top:0; left:0; width:100%; height:100%; z-index:400;"></div>
+</body>
+</html>

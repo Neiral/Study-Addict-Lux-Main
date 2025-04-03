@@ -293,208 +293,54 @@ function setMinSession() {
 }
 function newQuote() {
   const quotes = [
-    "You are nothing, and no one cares, so rise up now and climb the stairs.", // 1
-    "You have no value, no worth, no name, till you step up and change the game.", // 2
-    "No one is coming, no one will try, it's up to you to touch the sky.", // 3
-    "You are unseen, unknown, unheard, till success makes them eat their words.", // 4
-    "They don’t ignore you because they’re busy, you’re just a ghost, forgotten so easy.", // 5
-    "No one believes in the words you say, they trust in results, so lead the way.", // 6
-    "You are replaceable, forgettable, gone, unless you fight and prove them wrong.", // 7
-    "The world is brutal, unfair, and cold, only the strong will rise and hold.", // 8
-    "If you disappeared right now, today, not one person would change their way.", // 9
-    "Your pain is a joke, your loss is fun, but they’ll regret it when you’ve won.", // 10
-    "They’ll laugh at your fall, then beg at your feet, once you rise and never retreat.", // 11
-    "Nobody bows to the weak and lost, so build yourself no matter the cost.", // 12
-    "They forgot your name, they left with ease, make them regret it—bring them to their knees.", // 13
-    "You cry at night, they sleep just fine, so why not grind and make life shine?", // 14
-    "Your tears are fuel, your rage is fire, let it burn and take you higher.", // 15
-    "No one claps when you start the race, they only cheer when you take first place.", // 16
-    "Dreams mean nothing without the sweat, get up now, there's time left yet.", // 17
-    "They never cared, they never will, so show them pain and break their will.", // 18
-    "The world is blind to silent cries, but it bows to those who rise.", // 19
-    "You were an option, a game, a joke, now be the fire that makes them choke.", // 20
-    "They left you behind without a glance, now take your pain and learn to dance.", // 21
-    "You beg for love, for time, for grace, they left without a second's trace.", // 22
-    "Stop chasing ghosts, stop wishing for light, be the storm that owns the night.", // 23
-    "You sat and prayed, but nothing came, now work so hard they fear your name.", // 24
-    "No one cares if you break or fall, but they will when you have it all.", // 25
-    "You are weak, a shadow, a stain, till you rise and take the reins.", // 26
-    "They used you, played you, threw you away, now show them hell and make them pay.", // 27
-    "You're soft, you're slow, you're stuck, you're lost, so build a beast no matter the cost.", // 28
-    "No one checks if you're dead or alive, till you succeed and start to thrive.", // 29
-    "Crying won’t fix it, pain won't fade, only hard work turns dark to day.", // 30
-    "They won't text back, they won't regret, but they will when you’re what they can’t forget.", // 31
-    "Your comfort is a trap, your doubts are chains, break them all and forge new gains.", // 32
-    "They smirk, they mock, they call you weak, but soon they'll beg to hear you speak.", // 33
-    "You lost the fight, you lost your pride, now train so hard they step aside.", // 34
-    "They never saw you, never cared, now let success be your revenge declared.", // 35
-    "The world is cruel, the world is wild, so turn your pain into something styled.", // 36
-    "You waited, wasted, sat so still, now move so fast you break their will.", // 37
-    "Excuses are a fool’s best friend, drop them all or meet your end.", // 38
-    "Your heart is broken, your soul is sore, now use that pain and build some more.", // 39
-    "No more love, no more hope, just discipline will help you cope.", // 40
-    "They ghosted you, they walked away, now grind so hard they beg to stay.", // 41
-    "You chase them down, they just ignore, now chase success and beg no more.", // 42
-    "They’ll only miss you when you’re gone, so build a life and prove them wrong.", // 43
-    "No one is watching, no one cares, till they see you climb the stairs.", // 44
-    "Be the nightmare they never knew, work so hard they envy you.", // 45
-    "Let your rage become your wings, let the struggle forge your kings.", // 46
-    "You are nothing, you are dust, till you rise and earn their trust.", // 47
-    "Drown in sorrow, drown in pain, or swim to shore and rise again.", // 48
-    "They love to doubt, they love to hate, now rise so high it’s far too late.", // 49
-    "Forget their words, forget their face, you only need the will to race.", // 50
-    "No one saves you, no one tries, only you can touch the skies.", // 51
-    "Make your name, make your mark, or fade away into the dark.", // 52
-    "No one listens, no one sees, till you bring them to their knees.", // 53
-    "They doubted, they laughed, they turned away, now own your world and make them pay.", // 54
-    "Your weakness feeds their hungry pride, now rise so strong they run and hide.", // 55
-    "Be the legend they once ignored, write your fate with sweat and sword.", // 56
-    "No one waits, no one stops, only kings stand at the tops.", // 57
-    "Be the beast they couldn’t tame, work so hard they chant your name.", // 58
-    "The past is gone, the time is now, step up strong and take a vow.", // 59
-    "They left, they ran, they found someone new, now show them what they really threw.", // 60
-    "You're not forgotten, just unseen, now build yourself into a machine.", // 61
-    "Stop complaining, start the war, fight so hard they beg for more.", // 62
-    "They left you weak, they left you cold, now carve success in solid gold.", // 63
-    "No one gives you what you crave, so fight for it and misbehave.", // 64
-    "Your mind is weak, your soul is tired, now light the flame and get inspired.", // 65
-    "Your scars are proof of lessons learned, now use them all for power earned.", // 66
-    "You begged, you cried, you tore apart, now use that pain to forge your heart.", // 67
-    "Be the ghost they fear at night, haunt their world with blinding light.", // 68
-    "They moved on, they’re doing fine, so work so hard they wish you’d shine.", // 69
-    "They never called, they never cared, so build a throne and take your chair.", // 70
-    "They don’t check on you, they never will, so build yourself with iron will.", // 71
-    "You wait for a sign, you beg for a clue, but no one is watching, it’s all up to you.", // 72
-    "You were an afterthought, a waste of space, now make your name impossible to replace.", // 73
-    "They don’t love you, they love control, so break the chains and take your role.", // 74
-    "If you sit and cry, you’ll die unknown, so grind until your name is shown.", // 75
-    "No one pities the man who waits, the world rewards those who dominate.", // 76
-    "They walk right past you, don’t even stare, but soon your success will make them care.", // 77
-    "You were an option, they chose to ignore, now become the person they beg to adore.", // 78
-    "If you don’t move, you stay the same, so step up strong and own your name.", // 79
-    "Tears won’t build you, pain won’t stay, unless you use it to pave your way.", // 80
-    "They left without looking back, now grind so hard they fade to black.", // 81
-    "The weak complain, the strong persist, so fight each day and never resist.", // 82
-    "You are a ghost, unseen, unheard, so rise with action, not empty words.", // 83
-    "They celebrate while you feel pain, but one day soon, you’ll own the game.", // 84
-    "No one will give you what you seek, take it now, don’t be weak.", // 85
-    "You crave revenge, you crave their tears, but success is what they’ll truly fear.", // 86
-    "Don’t just exist, refuse to crawl, stand up now and have it all.", // 87
-    "If you fail, they’ll mock, they’ll cheer, so make them regret each wasted year.", // 88
-    "You loved too much, you gave your best, they walked away—now pass their test.", // 89
-    "No one’s watching, no one waits, you either build or seal your fate.", // 90
-    "You fell apart, they didn’t blink, now let success be what they think.", // 91
-    "They will forget you if you fail, so fight your war, set your sail.", // 92
-    "No one notices broken dreams, but they all bow when power screams.", // 93
-    "They replaced you fast, moved right along, now be so great they know they were wrong.", // 94
-    "They said you couldn’t, they laughed out loud, so shut them up, make yourself proud.", // 95
-    "You waste your time on love and sorrow, but will they care for you tomorrow?", // 96
-    "They had their chance, they let you go, so rise above, put on a show.", // 97
-    "Your pain is fuel, your loss is fire, burn the past, build something higher.", // 98
-    "No one checks if you’re alright, but they’ll show up when you shine bright.", // 99
-    "They never loved you, not at all, they loved control and watched you fall.", // 100
-    "You sit and wish, you wait and cry, but nothing changes till you try.", // 101
-    "Be the fire, burn the chains, let their absence fuel your gains.", // 102
-    "They left you behind, they cut the ties, now be the king that rules the skies.", // 103
-    "You were a joke, a backup plan, now be the beast they cannot stand.", // 104
-    "If you beg, you stay the same, demand success, rewrite your name.", // 105
-    "They took you for granted, threw you away, now make them suffer every day.", // 106
-    "No more love, no more grace, build a monster they cannot replace.", // 107
-    "You were the fool, blind and weak, now let them choke when you reach your peak.", // 108
-    "You wait for them, they move ahead, stop chasing ghosts, grind instead.", // 109
-    "They used you up, they watched you break, now show them all their worst mistake.", // 110
-    "The world is cold, the rules are set, the strong survive, the weak regret.", // 111
-    "No second chances, no second tries, you win or lose beneath these skies.", // 112
-    "Forget their names, forget their past, grind so hard you’ll always last.", // 113
-    "They used your kindness, drained your soul, now build yourself and take control.", // 114
-    "No one cares, no one stays, so build a life that goes both ways.", // 115
-    "Be the legend they threw away, the storm they feared but couldn’t stay.", // 116
-    "You watched them love, you watched them shine, now take your pain and make it mine.", // 117
-    "They won’t regret it if you stay down, so rise up now and take your crown.", // 118
-    "You begged them once, you cried, you bled, now make them wish that they were dead.", // 119
-    "No more sorrow, no more pain, just brutal strength and endless gain.", // 120
-    "No one gave you what you need, so fight like hell, make yourself bleed.", // 121
-    "They don’t deserve the tears you weep, now let your discipline run deep.", // 122
-    "You had your moment, you had your fall, now be the king who owns it all.", // 123
-    "Pain is fleeting, weakness stays, so kill the past and change your ways.", // 124
-    "They thought you’d break, they thought you’d quit, now show them all what legends get.", // 125
-    "No one’s watching, no one cares, until you win and they compare.", // 126
-    "Stop the waiting, stop the pain, grab success and let it reign.", // 127
-    "They turned their back, they walked away, now build a world where they can’t stay.", // 128
-    "No more doubts, no more regret, today’s the day you don’t forget.", // 129
-    "Be the storm, destroy the past, build a life that’s built to last.", // 130
-    "If you give up, you stay the same, now own your fate and change the game.", // 131
-    "They laughed, they mocked, they walked away, now grind so hard they fade to grey.", // 132
-    "No second thoughts, no wasted breath, fight so hard they fear your death.", // 133
-    "You were the fool, the blind, the weak, now rise up high, let vengeance speak.", // 134
-    "No more excuses, no more delay, dominate now or fade away.", // 135
-    "They won’t regret it if you fail, but they will when you prevail.", // 136
-    "You sat in pain, you begged to stay, now let that fire burn the way.", // 137
-    "No one saves you, no one tries, be the legend that survives.", // 138
-    "They replaced you fast, they let you go, now grind until they never know.", // 139
-    "The ones you love will walk away, so make success the one that stays.", // 140
-    "They never checked, they never asked, now build a future that will last.", // 141
-    "You cry, you beg, you hope, you wait, but no one’s coming—it’s too late.", // 142
-    "They found someone new, they’re doing fine, now make them wish that you still shine.", // 143
-    "You sit in silence, lost in pain, while winners grind and build their name.", // 144
-    "They left, they laughed, they walked away, now build success that makes them pay.", // 145
-    "No one’s looking, no one cares, till you succeed and climb the stairs.", // 146
-    "You broke, you bent, you almost quit, now show the world you’ll never sit.", // 147
-    "Your dreams mean nothing if you wait, so start right now and choose your fate.", // 148
-    "You beg, you plead, you wish they’d stay, but strong men walk the other way.", // 149
-    "They gave up on you without a fight, now let success bring them to light.", // 150
-    "You waste your time on those who left, now take revenge and be your best.", // 151
-    "No one saves you, no one tries, only legends touch the skies.", // 152
-    "They won’t regret it if you stay the same, but they will when you change the game.", // 153
-    "You waited years for them to see, now build a life where they won’t be.", // 154
-    "They said you’re nothing, they made it clear, so work so hard they disappear.", // 155
-    "You pray, you hope, you wish they knew, but the truth is—they never do.", // 156
-    "You gave them time, you gave them love, they gave you pain—so rise above.", // 157
-    "They forgot your name, they let you go, now let success become your glow.", // 158
-    "You sat in sadness, drowning slow, but winners rise and let it go.", // 159
-    "They didn’t care, they never will, so climb the top and show your skill.", // 160
-    "You gave your heart, you gave your trust, now let them choke on what they crushed.", // 161
-    "They said you couldn’t, they said you won’t, now prove them wrong until they don’t.", // 162
-    "You waste your nights on what they did, but they forgot you—so make them wish.", // 163
-    "They watch you suffer, they watch you fall, now rise and own it all.", // 164
-    "You let them win, you let them break, but now it’s time to raise the stakes.", // 165
-    "They took your love, they let it rot, now make them beg for what they lost.", // 166
-    "You’re nothing now, just dust, just air, so make them wish that they still cared.", // 167
-    "No one listens, no one sees, till they’re bowing on their knees.", // 168
-    "You gave them effort, they gave you lies, now make them pay when you rise.", // 169
-    "You miss their voice, you miss their touch, but they moved on, they don’t miss much.", // 170
-    "No more love, no more games, only power, only flames.", // 171
-    "They said forever, but they lied, now build a kingdom and let them cry.", // 172
-    "They wanted fun, they wanted free, but you want power—so let it be.", // 173
-    "You beg for closure, you beg for peace, but only success will make pain cease.", // 174
-    "They looked away, they let you break, now make them wish for one mistake.", // 175
-    "Your weakness made them laugh and grin, now kill it all and choose to win.", // 176
-    "You were soft, you let them play, now make them beg to hear your name.", // 177
-    "The world is cruel, the world is fast, so move ahead or stay the past.", // 178
-    "They left you dry, they left you cold, now turn that pain into solid gold.", // 179
-    "They don’t deserve the tears you weep, now let your discipline run deep.", // 180
-    "They watched you break, they watched you fold, now grind until they fear your soul.", // 181
-    "They said you’re weak, they laughed out loud, now shut them up, make yourself proud.", // 182
-    "You cry at night, you shake in pain, but only action breaks the chain.", // 183
-    "No one’s waiting, no one calls, so build a life that breaks their walls.", // 184
-    "They moved on, they never looked back, now build a future they’ll never crack.", // 185
-    "You lost, you failed, you took the hit, now get back up and never quit.", // 186
-    "You begged for time, you begged for love, but they just watched—so rise above.", // 187
-    "You sat in darkness, cold and weak, now chase success and let it speak.", // 188
-    "No one listens, no one cares, till you stand tall above the stairs.", // 189
-    "Be the fire, burn the chains, let their absence fuel your gains.", // 190
-    "They walked away, they broke your trust, now show them all that rise you must.", // 191
-    "Your scars are proof of battles lost, but strength is built through pain’s great cost.", // 192
-    "They wrote you off, they turned their back, now build yourself and never slack.", // 193
-    "They said you’re nothing, they said you’re done, now make them see you’ve just begun.", // 194
-    "You spent too long in fear and doubt, now let them choke as you climb out.", // 195
-    "You begged, you cried, you tried to stay, but now it’s time to walk away.", // 196
-    "You gave them power, you let them win, now take it back and start again.", // 197
-    "No more waiting, no more cries, just power, hunger, and sharp replies.", // 198
-    "They never cared, they never tried, now let your greatness kill their pride.", // 199
-    "Your tears won’t change the past you see, but victory makes them wish to be.", // 200
-  
-      
+        "They love your presence, but not your name, study hard and change the game.",
+        "You're their last thought, their aftertaste, work in silence, leave no waste.",
+        "You text, they see, they never reply, rise so high they choke on their lie.",
+        "You're an option, a plan gone wrong, be their regret, prove them strong.",
+        "No one stays, no one calls, build your throne or watch it fall.",
+        "They loved the power, not the face, become the fire, leave no trace.",
+        "They whisper your name like it’s a joke, make them beg with every stroke.",
+        "They moved on, they found their best, now leave them stunned, leave them pressed.",
+        "You begged for love, they gave you air, now own the world, make them stare.",
+        "Ignored today, forgotten tomorrow, but study now, erase the sorrow.",
+        "You're the message left on read, burn your pain, rise from the dead.",
+        "They don’t love, they just use, study now, refuse to lose.",
+        "A loser waits, a winner grinds, so prove them wrong, rewrite their minds.",
+        "You're their second, not their first, be their nightmare, not their thirst.",
+        "You're their silence, not their sound, make them miss what can’t be found.",
+        "They replaced you overnight, study now, win the fight.",
+        "You're a face, not a name, make them cry in silent shame.",
+        "They never thought you'd be the king, now let success be your sting.",
+        "They laughed, they left, they shut you out, now be the name they cry about.",
+        "You chase their love, they chase their dreams, wake up now, tear the seams.",
+        "You're a shadow, not the sun, grind in silence, be the one.",
+        "They won’t text, they won’t care, study hard, make them stare.",
+        "You're a ghost in their mind, leave them breathless, leave them blind.",
+        "You're the chapter they skipped to read, now be the story they beg to need.",
+        "No one stays, no one waits, rise above or share their fate.",
+        "You're the game they chose to quit, now be the player they can’t forget.",
+        "They won’t miss you till you shine, build your empire, make it fine.",
+        "You're the ‘maybe,’ not the ‘must,’ turn your pain into their dust.",
+        "They found better, they let you go, now be the fire, let them know.",
+        "You’re the past, not the now, make them wish they knew you how.",
+        "You're their option, not their goal, now make them beg to sell their soul.",
+        "No one saves, no one waits, grab your dreams, rewrite your fate.",
+        "You were the joke, you were the fool, now be the king, make the rules.",
+        "You're forgotten, lost, replaced, study now, leave them faced.",
+        "They never cared, they never cried, now be the storm they can’t deny.",
+        "You were dust beneath their feet, now rise like fire, make them weep.",
+        "You're the door they left behind, now be the lock they’ll never find.",
+        "They loved the thrill, not the pain, now be the one they crave again.",
+        "You chased them down, they walked away, now let success make them stay.",
+        "You’re the silence in their night, be the echo, burn so bright.",
+        "They loved, they left, they found their way, now let them wish you never strayed.",
+        "You're the memory they forgot, be the lesson they never thought.",
+        "They picked another, let you go, now be the name they’ll never know.",
+        "You cried, they smiled, they moved ahead, now study hard, leave them dead.",
+        "You're the backup, not the prize, turn your wounds into their cries.",
+        "They don’t call, they don’t see, but when you shine, they’ll beg to be.",
+        "You're the extra, not the core, grind in silence, be their war.",
+        "They never needed, never tried, now let them watch you touch the sky."
   ];
   const randIndex = Math.floor(Math.random() * quotes.length);
   document.getElementById("quoteText").textContent = quotes[randIndex] ;
